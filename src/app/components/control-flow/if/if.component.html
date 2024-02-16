@@ -1,0 +1,48 @@
+<h4>Premissas</h4>
+
+<p>Versão do angular é a <b>{{ angularVersion }}</b></p>
+<p>Idade é <b>{{ idade }}</b></p>
+
+<hr>
+
+<h4>Forma nova com Angular 17</h4>
+
+<img src="../../../../assets/img/if-v17.png"
+     alt="Forma nova com Angular 17">
+
+<!--FORMA NOVA-->
+
+@if (angularVersion === 17) {
+<p class="result">A versão do Angular é a 17</p>
+}
+
+@else if (angularVersion === 16) {
+<p class="result">A versão do Angular é a 16</p>
+}
+
+@else {
+<p class="result">É alguma outra versão abaixo da 16</p>
+}
+
+<hr>
+
+<h4>Forma das versões anteriores do Angular 17</h4>
+
+<img src="../../../../assets/img/if-before-v17.png"
+     alt="Forma das versões anteriores do Angular 17">
+
+<!--FORMA ANTIGA-->
+
+<ng-container *ngIf="idade >=18; else adolescent">
+    <p class="result">Você é adulto</p>
+</ng-container>
+
+<ng-template #adolescent>
+    <ng-container *ngIf="idade >=15 && idade <18; else minor">
+        <p class="result">Você é adolescente</p>
+    </ng-container>
+</ng-template>
+
+<ng-template #minor>
+    <p class="result">Você é criança</p>
+</ng-template>
